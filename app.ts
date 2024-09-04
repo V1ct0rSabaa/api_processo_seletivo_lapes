@@ -4,20 +4,19 @@ import connectDB from './db/connection';
 import expressRouter from './routes/router';
 import dotenv from 'dotenv';
 
-dotenv.config(); // instanciando as váriaveis de ambiente
+dotenv.config(); // // Carrega as variáveis de ambiente do arquivo .env
 const app = express();
 
 //  middlewares
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // Habilita o  CORS para permitir requests de diferentes origens
+app.use(express.json()); // permite request com JSON
 
-// conectando no mongoDB
-connectDB()
+connectDB() // conectando no mongoDB
 
 // Routes
 const router = expressRouter
 app.use('/api', router);
 
 app.listen(3000, () => {
-  console.log('Servidor Online!');
+  console.log('Servidor Online!'); // teste manual é feio, eu sei kkkk
 });
